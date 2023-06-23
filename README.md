@@ -17,7 +17,7 @@ Retrieve the current word.
 
 ```json
 {
-  "word": "example
+  "word": "example"
 }
 ```
 
