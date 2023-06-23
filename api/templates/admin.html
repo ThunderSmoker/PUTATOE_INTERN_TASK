@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Portal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        p {
+            margin-bottom: 10px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"] {
+            padding: 5px;
+            width: 200px;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>Admin Portal</h1>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+    <p>Current word: <strong>{{ current_word }}</strong></p>
+    <form method="post" action="/admin">
+        <label for="word">Change word:</label>
+        <input type="text" name="word" id="word" required>
+        <button type="submit" onclick="showSpinner()">Save</button>
+    </form>
+    <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+
+    <script>
+        function showSpinner() {
+            document.getElementById('loadingSpinner').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

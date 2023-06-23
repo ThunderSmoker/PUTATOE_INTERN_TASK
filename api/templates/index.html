@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #word {
+            font-size: 20px;
+            margin-top:20px;
+        }
+        
+        .spinner {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>API Example</h1>
+    <nav>
+        <a href="/admin">Admin</a>
+    </nav>
+    <p>Get the word from the API:</p>
+    <button onclick="getWord()">Get Word</button>
+    <p id="word">The word is = </p>
+    <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+
+    <script>
+        function getWord() {
+       
+            document.getElementById('loadingSpinner').style.display = 'block';
+
+            fetch('/api/word')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('word').textContent = 'The word is = ' + data.word;
+                })
+                .catch(error => console.log(error))
+                .finally(() => {
+         
+                    document.getElementById('loadingSpinner').style.display = 'none';
+                });
+        }
+    </script>
+</body>
+</html>
