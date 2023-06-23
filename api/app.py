@@ -17,6 +17,7 @@ def admin():
     if request.method == 'POST':
         new_word = request.form.get('word')
         update_word(new_word)
+        return jsonify({'message': 'Word updated successfully'})
     current_word = get_word()
     return render_template('admin.html', current_word=current_word)
 
